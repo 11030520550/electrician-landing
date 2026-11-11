@@ -16,6 +16,14 @@ The following service photographs are from Pexels and are used under the
 - `service-solar-roof.jpg` — [Pexels photo 12606669](https://www.pexels.com/photo/solar-panels-12606669/)
 - `service-ev-charging.jpg` — [Pexels photo 24376862](https://www.pexels.com/photo/electric-car-while-charging-24376862/)
 
-All downloaded images are resized JPEGs. Replace a service image by updating
-that service button's `data-service-image` and `data-service-alt` attributes
-in `index.html`.
+All downloaded images are resized JPEGs.
+
+## Currently used on the site
+
+The light redesign uses only `service-home-lighting.jpg` (experience section,
+labelled as an illustrative image). The other images are kept in the repository
+but are not copied to the deploy folder by `build-dist.ps1`.
+
+The hero has a reserved slot for a fine pencil illustration of an electrician
+(see the comment above `.hero-figure` in `index.html`). No artwork has been
+added yet; use only an illustration with clear usage rights.

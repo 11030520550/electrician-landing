@@ -19,6 +19,9 @@ backups/
 *.7z
 *.rar
 
+# Generated deploy folder (rebuild with build-dist.ps1)
+dist/
+
 # Operating system files
 Thumbs.db
 Desktop.ini
