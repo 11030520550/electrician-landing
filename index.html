@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fbf8f3">
+  <meta name="theme-color" content="#f6f4ea">
   <!-- Preview build for client review. Remove the robots line when the site goes live. -->
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="צבי כצמאן, חשמלאי מוסמך. 15 שנות ניסיון בעבודות חשמל מורכבות ומגוונות, במקצועיות, באמינות ובבטיחות. רישיון 978707.">
@@ -14,7 +14,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23fbf8f3'/%3E%3Cpath d='M18.6 4 9 18h7l-1.6 10L24 13h-7.2L18.6 4Z' fill='%23d9932f'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Gveret+Levin&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add("js");</script>
   <script src="script.js" defer></script>
@@ -44,40 +44,28 @@
   <main id="main">
     <!-- ============ HERO ============ -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-light" aria-hidden="true"></div>
       <div class="hero-inner">
         <!--
-          Illustration slot (right side in RTL).
-          Place the final fine pencil illustration of the electrician here, e.g.:
-          <img class="hero-figure-art" src="assets/images/hero-electrician-sketch.png" alt="איור עיפרון של חשמלאי מחייך עם כובע עבודה וידיים משולבות">
-          and remove the .hero-figure-placeholder element.
+          Electrician illustration (right side, per the client's sketch).
+          Pending: a fine grey pencil drawing on a transparent background
+          (PNG/WebP, about 1200x1500 px or larger, head and crossed arms, licensed for web use).
+          Add it inside the figure below, for example:
+          <img class="hero-figure-art" src="assets/images/hero-electrician.webp" width="1200" height="1500"
+               alt="איור עיפרון של חשמלאי מחייך עם כובע עבודה וידיים משולבות">
+          The figure sits on the section edge so the crossed arms extend into the next section.
         -->
-        <figure class="hero-figure" aria-hidden="true">
-          <div class="hero-figure-frame">
-            <span class="hero-figure-glow"></span>
-            <span class="hero-figure-guides"></span>
-            <span class="hero-figure-placeholder">איור בהכנה</span>
-          </div>
-        </figure>
+        <figure class="hero-figure" aria-hidden="true"></figure>
 
         <div class="hero-copy">
-          <p class="hero-eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>רישיון חשמלאי 978707</p>
           <h1 id="hero-title">
             <span class="hero-title">חשמלאי מוסמך</span>
             <span class="hero-name">צבי כצמאן</span>
           </h1>
-          <p class="hero-intro">15 שנות ניסיון בעבודות חשמל מורכבות ומגוונות — מקצועיות, דיוק ובטיחות בכל חיבור.</p>
-          <div class="hero-actions">
-            <a class="button-primary" href="#contact">
-              <span class="button-label">ליצירת קשר ובירור</span>
-              <span class="button-glint" aria-hidden="true"></span>
-              <span class="button-arrow" aria-hidden="true">←</span>
-            </a>
-            <a class="hero-phone" href="tel:0556717730"><span>או בחיוג ישיר</span> <b dir="ltr">055-671-7730</b></a>
-          </div>
+          <p class="hero-values">מקצועיות. אמינות. בטיחות.</p>
+          <p class="hero-intro">15 שנות ניסיון בביצוע עבודות חשמל מורכבות ומגוונות, תוך הקפדה על מקצועיות, דיוק ובטיחות.</p>
+          <a class="button-smoke" href="#contact">ליצירת קשר ובירור</a>
         </div>
       </div>
-      <a class="scroll-cue" href="#values" aria-label="המשך לגלילה"><i aria-hidden="true"></i></a>
     </section>
 
     <!-- ============ VALUES ============ -->
