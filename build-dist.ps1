@@ -13,7 +13,8 @@ $files = @(
   "styles.css",
   "script.js",
   "_headers",
-  "assets/images/service-home-lighting.jpg"
+  "assets/images/service-home-lighting.jpg",
+  "assets/images/electrician-portrait.png"
 )
 
 if (Test-Path $dist) { Remove-Item -Recurse -Force $dist }

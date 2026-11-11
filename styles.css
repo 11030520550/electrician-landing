@@ -352,22 +352,25 @@ h2 span {
   grid-template-columns: minmax(0, 41fr) minmax(0, 59fr);
 }
 
+/* electrician-portrait.png is 1448x1086 with the drawing in its right
+   ~64% (transparent on the left). The figure is anchored to the right
+   edge and lowered by 15% so the section edge cuts through the crossed
+   arms, which continue into the values section. */
 .hero-figure {
-  position: relative;
-  align-self: end;
-  justify-self: center;
-  width: min(100%, 560px);
-  aspect-ratio: 4 / 5;
+  position: absolute;
+  bottom: 0;
+  inset-inline-start: -6%;
+  width: min(73%, 900px);
   margin: 0;
-  transform: translateY(12%);
+  transform: translateY(15%);
   pointer-events: none;
+  /* paper-white of the drawing takes on the NWC030 background */
+  mix-blend-mode: multiply;
   animation: figure-in 2s var(--ease-cine) both .15s;
 }
 .hero-figure-art {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
+  height: auto;
 }
 @keyframes figure-in {
   from { opacity: 0; }
@@ -375,6 +378,9 @@ h2 span {
 }
 
 .hero-copy {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
   align-self: end;
   justify-self: start;
   max-width: 34rem;
@@ -1136,8 +1142,18 @@ html:not(.js) .filament-glow { stroke-dashoffset: 0; }
      cross into the next section. */
   .hero { min-height: 0; padding-top: calc(var(--header-h) + 2.5rem); }
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-copy { order: 0; justify-self: start; padding: 0 0 2rem; }
-  .hero-figure { order: 1; justify-self: start; width: min(78%, 380px); }
+  .hero { overflow-x: clip; }
+  .hero-copy { grid-column: 1; order: 0; justify-self: start; padding: 0 0 1rem; }
+  /* wider than the column: the extra width is the image's transparent
+     left part, so the drawn figure itself fills most of the width */
+  .hero-figure {
+    position: relative;
+    inset: auto;
+    order: 1;
+    justify-self: start;
+    width: min(118%, 760px);
+    max-width: none;
+  }
   /* Until the illustration file is added, don't reserve an empty block. */
   .hero-figure:empty { display: none; }
   .hero-figure:empty + .hero-copy { padding-bottom: 4rem; }

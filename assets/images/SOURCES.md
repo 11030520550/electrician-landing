@@ -20,10 +20,10 @@ All downloaded images are resized JPEGs.
 
 ## Currently used on the site
 
-The light redesign uses only `service-home-lighting.jpg` (experience section,
-labelled as an illustrative image). The other images are kept in the repository
-but are not copied to the deploy folder by `build-dist.ps1`.
+- `electrician-portrait.png` — hero pencil illustration (transparent PNG,
+  1448x1086), supplied by the project owner.
+- `service-home-lighting.jpg` — experience section, labelled as an
+  illustrative image.
 
-The hero has a reserved slot for a fine pencil illustration of an electrician
-(see the comment above `.hero-figure` in `index.html`). No artwork has been
-added yet; use only an illustration with clear usage rights.
+The other images are kept in the repository but are not copied to the deploy
+folder by `build-dist.ps1`.
