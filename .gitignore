@@ -1,0 +1,29 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Local backups and archives
+backup/
+backups/
+**/backup/
+**/backups/
+*.bak
+*.backup
+*.old
+*.zip
+*.7z
+*.rar
+
+# Operating system files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Local editor settings
+.vscode/
+.idea/
