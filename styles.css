@@ -382,8 +382,10 @@ h2 span {
   z-index: 1;
   grid-column: 2;
   align-self: end;
-  justify-self: start;
-  max-width: 34rem;
+  justify-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* RTL: lines start on the right, near the figure */
   padding-inline-start: clamp(.5rem, 3vw, 3rem);
   padding-bottom: clamp(2.5rem, 6vh, 4.5rem);
 }
@@ -402,75 +404,85 @@ h2 span {
   flex-direction: column;
   font-weight: inherit;
 }
+/* Display title: condensed, high-contrast serif */
 .hero-title {
-  font-family: "Gveret Levin", var(--font-display);
-  font-weight: 400;
-  font-size: clamp(3.4rem, 6.6vw, 6.2rem);
-  line-height: 1.05;
-  color: #4a5966;
-  /* the font has a single, fairly bold weight: a hairline in the
-     background colour thins the strokes into a finer pen line */
-  -webkit-text-stroke: .025em var(--hero-bg);
-  paint-order: normal;
-}
-.hero-name {
-  margin-top: .3em;
-  font-family: "Bellefair", var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.3rem, 4.3vw, 3.9rem);
-  line-height: 1.05;
-  letter-spacing: .01em;
+  font-family: "Noto Serif Hebrew", var(--font-display);
+  font-weight: 800;
+  font-stretch: 62.5%;
+  font-size: clamp(4.2rem, 9vw, 8.4rem);
+  line-height: .98;
+  letter-spacing: -0.005em;
   color: var(--ink);
 }
-.hero-values {
-  margin-top: 1.3rem;
-  font-size: 1rem;
+/* Signature line: calligraphic italic, with a fine broad-nib sweep
+   (stacked offsets along a slanted nib) for a pen-written stroke */
+.hero-name {
+  margin-top: .22em;
+  font-family: "Bona Nova", var(--font-display);
+  font-style: italic;
   font-weight: 400;
-  letter-spacing: .08em;
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  line-height: 1.1;
+  color: var(--smoke-deep);
+  text-shadow:
+    -.002em .005em 0 currentColor,
+    -.004em .01em 0 currentColor,
+    -.006em .015em 0 currentColor,
+    -.008em .02em 0 currentColor;
+}
+/* Values: light serif, widely spaced */
+.hero-values {
+  margin-top: 1.1rem;
+  font-family: "Frank Ruhl Libre", var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+  letter-spacing: .16em;
+  word-spacing: .55em;
   color: var(--smoke);
 }
 .hero-intro {
-  margin-top: .8rem;
-  max-width: 29rem;
-  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  margin-top: .9rem;
+  max-width: 34rem;
+  font-size: clamp(1.02rem, 1.3vw, 1.17rem);
+  line-height: 1.75;
   color: var(--smoke-deep);
 }
 
-.button-smoke {
-  position: relative;
+/* Contact button: warm caramel pill, bottom-left of the text block */
+.hero-cta {
+  align-self: flex-end;
   display: inline-flex;
   align-items: center;
-  margin-top: 2.2rem;
-  padding: 1rem 2.4rem;
+  gap: .75rem;
+  margin-top: 2rem;
+  padding: 1rem 1.9rem 1rem 2.2rem;
   border-radius: 999px;
-  background: #5c6c7a;
-  color: #fbf8f3;
-  font-weight: 400;
-  font-size: 1.05rem;
-  letter-spacing: .02em;
-  overflow: hidden;
-  isolation: isolate;
-  box-shadow: 0 16px 34px -18px rgba(52, 64, 75, .6);
-  transition: background-color .7s var(--ease-soft), box-shadow .7s var(--ease-soft), transform .7s var(--ease-cine);
+  background: #e0a35f;
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 1.06rem;
+  letter-spacing: .01em;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .35) inset, 0 16px 32px -18px rgba(150, 92, 30, .65);
+  transition: background-color .6s var(--ease-soft), box-shadow .6s var(--ease-soft), transform .6s var(--ease-cine);
 }
-.button-smoke::before {
-  /* soft warm light that rises on hover */
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: radial-gradient(90% 130% at 50% 0%, rgba(255, 236, 200, .28), rgba(255, 236, 200, 0) 65%);
-  opacity: 0;
-  transition: opacity .8s var(--ease-soft);
+.hero-cta svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .6s var(--ease-cine);
 }
-.button-smoke:hover,
-.button-smoke:focus-visible {
-  background: #66788a;
+.hero-cta:hover,
+.hero-cta:focus-visible {
+  background: #e8b273;
   transform: translateY(-1px);
-  box-shadow: 0 20px 40px -18px rgba(52, 64, 75, .6), 0 0 0 5px rgba(92, 108, 122, .1);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .4) inset, 0 20px 38px -18px rgba(150, 92, 30, .7), 0 0 0 5px rgba(224, 163, 95, .16);
 }
-.button-smoke:hover::before,
-.button-smoke:focus-visible::before { opacity: 1; }
+.hero-cta:hover svg { transform: rotate(-8deg); }
 
 /* ---------- Reveal (only when JS is active) ---------- */
 
@@ -1143,7 +1155,7 @@ html:not(.js) .filament-glow { stroke-dashoffset: 0; }
   .hero { min-height: 0; padding-top: calc(var(--header-h) + 2.5rem); }
   .hero-inner { grid-template-columns: 1fr; }
   .hero { overflow-x: clip; }
-  .hero-copy { grid-column: 1; order: 0; justify-self: start; padding: 0 0 1rem; }
+  .hero-copy { grid-column: 1; order: 0; justify-self: stretch; padding: 0 0 1rem; }
   /* wider than the column: the extra width is the image's transparent
      left part, so the drawn figure itself fills most of the width */
   .hero-figure {
@@ -1204,7 +1216,10 @@ html:not(.js) .filament-glow { stroke-dashoffset: 0; }
   body { padding-bottom: 68px; }
 
   .hero { padding-top: calc(var(--header-h) + 1.8rem); }
-  .hero-values { letter-spacing: .05em; }
+  .hero-title { font-size: clamp(3.2rem, 16vw, 5rem); }
+  .hero-name { font-size: clamp(2.3rem, 11vw, 3.2rem); }
+  .hero-values { letter-spacing: .1em; word-spacing: .35em; }
+  .hero-intro br { display: none; }
 
   .values-line { flex-direction: column; align-items: center; gap: 2.2rem; }
   .value-divider {
