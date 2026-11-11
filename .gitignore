@@ -21,6 +21,7 @@ backups/
 
 # Generated deploy folder (rebuild with build-dist.ps1)
 dist/
+netlify-preview/
 
 # Operating system files
 Thumbs.db
