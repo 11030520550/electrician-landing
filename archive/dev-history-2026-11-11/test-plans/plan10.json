@@ -1,0 +1,24 @@
+[
+  { "name": "d1440", "w": 1440, "h": 900, "mobile": false, "shots": [
+    { "name": "01-hero", "wait": 3500 },
+    { "name": "02-m", "noshot": true, "js": "document.fonts.ready.then(()=>{const r=s=>{const b=document.querySelector(s).getBoundingClientRect();return [b.left|0,b.top|0,b.right|0,b.bottom|0]}; const g=s=>{const r=document.createRange(); r.selectNodeContents(document.querySelector(s)); const b=r.getBoundingClientRect(); return [b.left|0,b.top|0,b.right|0,b.bottom|0]}; return JSON.stringify({fonts:['Noto Serif Hebrew','Bona Nova','Frank Ruhl Libre'].map(f=>document.fonts.check('40px \"'+f+'\"','חשמלאי')), fig:r('.hero-figure'), hero:r('.hero'), title:g('.hero-title'), name:g('.hero-name'), values:g('.hero-values'), intro:g('.hero-intro'), btn:r('.hero-cta'), href:document.querySelector('.hero-cta').getAttribute('href'), docW:document.documentElement.scrollWidth})})", "wait": 100 },
+    { "name": "03-hover", "js": "document.querySelector('.hero-cta').focus(); 'f'", "wait": 900 }
+  ]},
+  { "name": "d1366", "w": 1366, "h": 768, "mobile": false, "shots": [
+    { "name": "01-hero", "wait": 3500 },
+    { "name": "02-m", "noshot": true, "js": "(()=>{const g=s=>{const r=document.createRange(); r.selectNodeContents(document.querySelector(s)); const b=r.getBoundingClientRect(); return [b.left|0,b.top|0,b.right|0,b.bottom|0]}; const f=document.querySelector('.hero-figure').getBoundingClientRect(); return JSON.stringify({fig:[f.left|0,f.top|0,f.right|0,f.bottom|0], title:g('.hero-title'), btn:g('.hero-cta'), docW:document.documentElement.scrollWidth})})()", "wait": 100 }
+  ]},
+  { "name": "d1024", "w": 1024, "h": 768, "mobile": false, "shots": [
+    { "name": "01-hero", "wait": 3500 },
+    { "name": "02-m", "noshot": true, "js": "(()=>{const g=s=>{const r=document.createRange(); r.selectNodeContents(document.querySelector(s)); const b=r.getBoundingClientRect(); return [b.left|0,b.top|0,b.right|0,b.bottom|0]}; const f=document.querySelector('.hero-figure').getBoundingClientRect(); return JSON.stringify({fig:[f.left|0,f.top|0,f.right|0,f.bottom|0], drawL:(f.left+f.width*0.329)|0, title:g('.hero-title'), intro:g('.hero-intro'), btn:g('.hero-cta'), docW:document.documentElement.scrollWidth})})()", "wait": 100 }
+  ]},
+  { "name": "m390", "w": 390, "h": 844, "mobile": true, "shots": [
+    { "name": "01-hero", "wait": 3500 },
+    { "name": "02-fig", "js": "window.scrollTo(0, 450)", "wait": 1500 },
+    { "name": "03-m", "noshot": true, "js": "JSON.stringify({docW:document.documentElement.scrollWidth, vw:innerWidth})", "wait": 100 }
+  ]},
+  { "name": "m360", "w": 360, "h": 740, "mobile": true, "shots": [
+    { "name": "01-hero", "wait": 3500 },
+    { "name": "02-m", "noshot": true, "js": "(()=>{const r=document.createRange(); r.selectNodeContents(document.querySelector('.hero-title')); const b=r.getBoundingClientRect(); return JSON.stringify({titleL:b.left|0, titleR:b.right|0, docW:document.documentElement.scrollWidth, vw:innerWidth})})()", "wait": 100 }
+  ]}
+]

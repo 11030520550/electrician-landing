@@ -1,0 +1,6 @@
+[
+  { "name": "compare", "w": 1300, "h": 1600, "mobile": false, "shots": [
+    { "name": "01", "wait": 4500 },
+    { "name": "fonts", "noshot": true, "js": "document.fonts.ready.then(()=>JSON.stringify(['Bona Nova','Noto Serif Hebrew','Noto Rashi Hebrew','Frank Ruhl Libre','Bellefair','Gveret Levin'].map(f=>f+':'+document.fonts.check('40px \"'+f+'\"','חשמלאי'))))", "wait": 100 }
+  ]}
+]

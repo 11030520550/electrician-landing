@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+Hebrew:wdth,wght@62.5..100,100..900&family=Frank+Ruhl+Libre:wght@300..900&family=Suez+One&family=David+Libre:wght@700&display=block" rel="stylesheet">
+<style>
+body{margin:0;background:#f6f4ea;color:#24282d;padding:16px 30px}
+.row{display:flex;align-items:center;gap:24px;border-bottom:1px solid #ddd;padding:2px 0}
+.n{font:12px Arial;width:200px;color:#888;direction:ltr;text-align:left;flex:none}
+.t{font-size:112px;line-height:1.25;white-space:nowrap}
+.s{font-size:64px;line-height:1.4;white-space:nowrap;color:#34404b}
+</style></head><body>
+<div class="row"><span class="n">T1 Suez One</span><span class="t" style="font-family:'Suez One'">חשמלאי מוסמך</span></div>
+<div class="row"><span class="n">T2 Frank Ruhl 800</span><span class="t" style="font-family:'Frank Ruhl Libre';font-weight:800">חשמלאי מוסמך</span></div>
+<div class="row"><span class="n">T3 Noto Serif 800 cond</span><span class="t" style="font-family:'Noto Serif Hebrew';font-weight:800;font-stretch:62.5%">חשמלאי מוסמך</span></div>
+<div class="row"><span class="n">T4 Noto Serif 600 cond</span><span class="t" style="font-family:'Noto Serif Hebrew';font-weight:600;font-stretch:70%">חשמלאי מוסמך</span></div>
+<div class="row"><span class="n">T5 Bona Nova 700</span><span class="t" style="font-family:'Bona Nova';font-weight:700">חשמלאי מוסמך</span></div>
+<div class="row"><span class="n">N1 Bona Nova italic</span><span class="s" style="font-family:'Bona Nova';font-style:italic">צבי כצמאן</span></div>
+<div class="row"><span class="n">N2 nib lettering skew 14</span><span class="s nib" style="font-family:'Noto Serif Hebrew';font-weight:100;font-stretch:62.5%;display:inline-block;transform:skewX(14deg);font-size:76px">צבי כצמאן</span></div>
+<div class="row"><span class="n">N3 Bona Nova italic + fine nib</span><span class="s nib2" style="font-family:'Bona Nova';font-style:italic">צבי כצמאן</span></div>
+<div class="row"><span class="n">V1 Noto Serif 300 cond tracked</span><span style="font-family:'Noto Serif Hebrew';font-weight:300;font-stretch:75%;font-size:24px;letter-spacing:.32em;color:#5f6f7d">איכות · אמינות · מקצועיות</span></div>
+<div class="row"><span class="n">V2 Frank Ruhl 300 tracked</span><span style="font-family:'Frank Ruhl Libre';font-weight:300;font-size:24px;letter-spacing:.2em;color:#5f6f7d">איכות.&nbsp;&nbsp;אמינות.&nbsp;&nbsp;מקצועיות.</span></div>
+<script>
+document.fonts.ready.then(()=>{
+  const nib=(sel,dx,dy,len)=>document.querySelectorAll(sel).forEach(el=>{const s=[];for(let i=1;i<=len*4;i++){const k=i/4;s.push(`${(dx*k).toFixed(2)}px ${(dy*k).toFixed(2)}px 0 currentColor`)}el.style.textShadow=s.join(',')});
+  nib('.nib',-0.3,1,3.5); nib('.nib2',-0.4,1,1.5);
+});
+</script>
+</body></html>

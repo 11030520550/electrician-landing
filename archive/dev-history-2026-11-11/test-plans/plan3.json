@@ -1,0 +1,15 @@
+[
+  { "name": "desk", "w": 1366, "h": 768, "mobile": false, "shots": [
+    { "name": "01-hero", "wait": 1500 },
+    { "name": "02-exp", "js": "document.querySelector('#experience').scrollIntoView({behavior:'instant'})", "wait": 3000 },
+    { "name": "03-links", "noshot": true, "js": "JSON.stringify({img: [...document.images].map(i=>i.complete && i.naturalWidth>0), tel: [...document.querySelectorAll('a[href^=\"tel:\"]')].map(a=>a.getAttribute('href')), wa: [...document.querySelectorAll('a[href^=\"https://wa.me\"]')].map(a=>a.href.split('?')[0]+'|'+a.target+'|'+a.rel), mail: [...document.querySelectorAll('a[href^=\"mailto:\"]')].length, docW: document.documentElement.scrollWidth})", "wait": 100 }
+  ]},
+  { "name": "form", "w": 1366, "h": 768, "mobile": false, "query": "?form-test=1", "shots": [
+    { "name": "01-submit", "js": "new Promise(r=>{setTimeout(()=>{const f=document.querySelector('[data-contact-form]'); f.name.value='Test User'; f.phone.value='0556717730'; f.message.value='Test message'; document.querySelector('#contact').scrollIntoView({behavior:'instant'}); f.querySelector('button[type=submit]').click(); setTimeout(()=>r(document.querySelector('[data-form-status]').dataset.state + ' :: ' + document.querySelector('[data-form-status]').textContent), 1500);}, 3200);})", "wait": 800 }
+  ]},
+  { "name": "mob", "w": 375, "h": 667, "mobile": true, "shots": [
+    { "name": "01-hero", "wait": 1800 },
+    { "name": "02-serv", "js": "document.querySelector('#services').scrollIntoView({behavior:'instant'}); window.scrollBy(0, 700)", "wait": 2500 },
+    { "name": "03-form-hidden", "noshot": true, "js": "JSON.stringify({formHidden: document.querySelector('[data-contact-form]').hidden, fallbackHidden: document.querySelector('[data-form-fallback]').hidden, docW: document.documentElement.scrollWidth, vw: innerWidth})", "wait": 100 }
+  ]}
+]

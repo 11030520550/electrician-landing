@@ -1,0 +1,5 @@
+[
+  { "name": "hf", "w": 1200, "h": 1250, "mobile": false, "shots": [
+    { "name": "01", "wait": 4500 }
+  ]}
+]

@@ -1,0 +1,28 @@
+[
+  { "name": "desk", "w": 1440, "h": 900, "mobile": false, "shots": [
+    { "name": "01-hero", "wait": 1500 },
+    { "name": "02-values", "js": "document.querySelector('#values').scrollIntoView({behavior:'instant'})", "wait": 2800 },
+    { "name": "03-exp", "js": "document.querySelector('#experience').scrollIntoView({behavior:'instant'})", "wait": 3500 },
+    { "name": "04-serv-a", "js": "document.querySelector('#services').scrollIntoView({behavior:'instant'})", "wait": 2500 },
+    { "name": "05-serv-b", "js": "window.scrollBy(0, 900)", "wait": 2500 },
+    { "name": "06-serv-c", "js": "window.scrollBy(0, 900)", "wait": 2500 },
+    { "name": "07-serv-d", "js": "window.scrollBy(0, 700)", "wait": 2500 },
+    { "name": "08-contact", "js": "document.querySelector('#contact').scrollIntoView({behavior:'instant'})", "wait": 2500 },
+    { "name": "09-footer", "js": "window.scrollTo(0, document.body.scrollHeight)", "wait": 1500 },
+    { "name": "metrics", "noshot": true, "js": "JSON.stringify({docW: document.documentElement.scrollWidth, vw: innerWidth, lit: document.querySelectorAll('.service.is-lit').length, len: document.querySelector('.wire-current').getTotalLength()|0, formHidden: document.querySelector('[data-contact-form]').hidden})", "wait": 100 }
+  ]},
+  { "name": "mob", "w": 390, "h": 844, "mobile": true, "shots": [
+    { "name": "01-hero", "wait": 1500 },
+    { "name": "02-hero2", "js": "window.scrollTo(0, 600)", "wait": 1500 },
+    { "name": "03-values", "js": "document.querySelector('#values').scrollIntoView({behavior:'instant'})", "wait": 2800 },
+    { "name": "04-exp", "js": "document.querySelector('#experience').scrollIntoView({behavior:'instant'})", "wait": 2500 },
+    { "name": "05-exp2", "js": "window.scrollBy(0, 750)", "wait": 3000 },
+    { "name": "06-serv", "js": "document.querySelector('#services').scrollIntoView({behavior:'instant'}); window.scrollBy(0, 500)", "wait": 2500 },
+    { "name": "07-serv2", "js": "window.scrollBy(0, 750)", "wait": 2500 },
+    { "name": "08-contact", "js": "document.querySelector('#contact').scrollIntoView({behavior:'instant'})", "wait": 2500 },
+    { "name": "09-contact2", "js": "window.scrollBy(0, 750)", "wait": 2000 },
+    { "name": "10-footer", "js": "window.scrollTo(0, document.body.scrollHeight)", "wait": 1500 },
+    { "name": "11-menu", "js": "window.scrollTo(0,0); document.querySelector('.menu-toggle').click()", "wait": 1200 },
+    { "name": "metrics", "noshot": true, "js": "JSON.stringify({docW: document.documentElement.scrollWidth, vw: innerWidth})", "wait": 100 }
+  ]}
+]

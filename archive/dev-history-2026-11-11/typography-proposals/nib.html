@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wdth,wght@62.5..100,100..900&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans+Hebrew:wght@100..800&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Rashi+Hebrew:wght@100..900&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;1,400;1,700&display=block" rel="stylesheet">
+<style>
+body{margin:0;background:#f6f4ea;color:#3d4954;padding:20px}
+.row{display:flex;align-items:center;gap:30px;border-bottom:1px solid #ddd;padding:10px 0}
+.n{font:12px Arial;width:230px;color:#888;direction:ltr;text-align:left}
+.t{font-size:96px;line-height:1.3}
+</style></head><body>
+<div class="row"><span class="n">A: Noto Serif Hebrew 100 cond + vertical nib</span><span class="t nib" data-dx="0.18" data-dy="1" data-n="7" style="font-family:'Noto Serif Hebrew';font-weight:100;font-stretch:62.5%">חשמלאי מוסמך</span></div>
+<div class="row"><span class="n">B: Noto Serif Hebrew 100 cond + 30deg nib</span><span class="t nib" data-dx="-0.6" data-dy="1" data-n="7" style="font-family:'Noto Serif Hebrew';font-weight:100;font-stretch:62.5%">חשמלאי מוסמך</span></div>
+<div class="row"><span class="n">C: Playpen 100 + angled nib</span><span class="t nib" data-dx="0.55" data-dy="1" data-n="7" style="font-family:'Playpen Sans Hebrew';font-weight:100">חשמלאי מוסמך</span></div>
+<div class="row"><span class="n">D: Rashi 100 + nib</span><span class="t nib" data-dx="0.4" data-dy="1" data-n="6" style="font-family:'Noto Rashi Hebrew';font-weight:100">חשמלאי מוסמך</span></div>
+<div class="row"><span class="n">E: Bona Nova italic</span><span class="t" style="font-family:'Bona Nova';font-style:italic">חשמלאי מוסמך</span></div>
+<div class="row"><span class="n">F: Bona Nova italic 700</span><span class="t" style="font-family:'Bona Nova';font-style:italic;font-weight:700">חשמלאי מוסמך</span></div>
+<script>
+document.fonts.ready.then(()=>{
+  document.querySelectorAll('.nib').forEach(el=>{
+    const dx=+el.dataset.dx, dy=+el.dataset.dy, n=+el.dataset.n, s=[];
+    for(let i=1;i<=n*4;i++){const k=i/4; s.push(`${(dx*k).toFixed(2)}px ${(dy*k).toFixed(2)}px 0 currentColor`);}
+    el.style.textShadow=s.join(',');
+  });
+  document.title='ok';
+});
+</script>
+</body></html>

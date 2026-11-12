@@ -1,0 +1,20 @@
+[
+  { "name": "desk1440", "w": 1440, "h": 900, "mobile": false, "shots": [
+    { "name": "01-hero", "wait": 2500 },
+    { "name": "02-fonts", "noshot": true, "js": "document.fonts.ready.then(()=>JSON.stringify({gveret: document.fonts.check('40px \"Gveret Levin\"','חשמלאי'), bellefair: document.fonts.check('40px \"Bellefair\"','צבי'), titleFont: getComputedStyle(document.querySelector('.hero-title')).fontFamily, bg: getComputedStyle(document.querySelector('.hero')).backgroundColor, btnHref: document.querySelector('.button-smoke').getAttribute('href'), docW: document.documentElement.scrollWidth}))", "wait": 100 },
+    { "name": "03-mock", "js": "const f=document.querySelector('.hero-figure'); f.innerHTML='<img class=\"hero-figure-art\" src=\"data:image/svg+xml,'+encodeURIComponent('<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 500\" fill=\"none\" stroke=\"#777\" stroke-width=\"2\"><path d=\"M120 120 Q200 40 280 120 L290 130 L110 130Z\"/><circle cx=\"200\" cy=\"175\" r=\"62\"/><path d=\"M70 330 Q90 260 200 255 Q310 260 330 330 L340 500 M60 500 L70 330\"/><rect x=\"60\" y=\"400\" width=\"280\" height=\"70\" rx=\"30\"/><text x=\"120\" y=\"445\" font-size=\"20\" fill=\"#777\" stroke=\"none\">MOCK ARMS</text></svg>')+'\">'; const h=document.querySelector('.hero').getBoundingClientRect(), r=f.getBoundingClientRect(); JSON.stringify({heroBottom:h.bottom|0, figTop:r.top|0, figBottom:r.bottom|0, figLeft:r.left|0, figRight:r.right|0, copyTop: document.querySelector('.hero-copy').getBoundingClientRect().top|0})", "wait": 2200 },
+    { "name": "04-mock-scrolled", "js": "window.scrollTo(0, 420)", "wait": 1500 },
+    { "name": "05-hover", "noshot": true, "js": "window.scrollTo(0,0); 'ok'", "wait": 300 }
+  ]},
+  { "name": "desk1366", "w": 1366, "h": 768, "mobile": false, "shots": [
+    { "name": "01-hero", "wait": 2500 }
+  ]},
+  { "name": "mob", "w": 390, "h": 844, "mobile": true, "shots": [
+    { "name": "01-hero", "wait": 2500 },
+    { "name": "02-mock", "js": "const f=document.querySelector('.hero-figure'); f.innerHTML='<img class=\"hero-figure-art\" src=\"data:image/svg+xml,'+encodeURIComponent('<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 500\" fill=\"none\" stroke=\"#777\" stroke-width=\"2\"><circle cx=\"200\" cy=\"175\" r=\"62\"/><rect x=\"60\" y=\"400\" width=\"280\" height=\"70\" rx=\"30\"/></svg>')+'\">'; window.scrollTo(0, 500); JSON.stringify({docW: document.documentElement.scrollWidth, vw: innerWidth})", "wait": 2000 }
+  ]},
+  { "name": "mob360", "w": 360, "h": 740, "mobile": true, "shots": [
+    { "name": "01-hero", "wait": 2500 },
+    { "name": "02-w", "noshot": true, "js": "JSON.stringify({docW: document.documentElement.scrollWidth, vw: innerWidth})", "wait": 100 }
+  ]}
+]

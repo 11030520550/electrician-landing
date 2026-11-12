@@ -1,0 +1,28 @@
+[
+  { "name": "d1440", "w": 1440, "h": 900, "mobile": false, "shots": [
+    { "name": "01-hero", "wait": 3000 },
+    { "name": "02-m", "noshot": true, "js": "(()=>{const h=document.querySelector('.hero').getBoundingClientRect(), f=document.querySelector('.hero-figure').getBoundingClientRect(), c=document.querySelector('.hero-copy').getBoundingClientRect(), b=document.querySelector('.button-smoke').getBoundingClientRect(), i=document.querySelector('.hero-figure-art'); return JSON.stringify({loaded:i.complete&&i.naturalWidth, heroB:h.bottom|0, figT:f.top|0, figB:f.bottom|0, figL:f.left|0, figR:f.right|0, drawL:(f.left+f.width*0.329)|0, copyL:c.left|0, copyR:c.right|0, copyT:c.top|0, btnB:b.bottom|0, btnR:b.right|0, docW:document.documentElement.scrollWidth, vw:innerWidth})})()", "wait": 100 },
+    { "name": "03-edge", "js": "window.scrollTo(0, 450)", "wait": 1500 }
+  ]},
+  { "name": "d1366", "w": 1366, "h": 768, "mobile": false, "shots": [
+    { "name": "01-hero", "wait": 3000 },
+    { "name": "02-m", "noshot": true, "js": "(()=>{const h=document.querySelector('.hero').getBoundingClientRect(), f=document.querySelector('.hero-figure').getBoundingClientRect(), c=document.querySelector('.hero-copy').getBoundingClientRect(); return JSON.stringify({heroB:h.bottom|0, figT:f.top|0, figB:f.bottom|0, drawL:(f.left+f.width*0.329)|0, copyR:c.right|0, docW:document.documentElement.scrollWidth, vw:innerWidth})})()", "wait": 100 }
+  ]},
+  { "name": "d1024", "w": 1024, "h": 768, "mobile": false, "shots": [
+    { "name": "01-hero", "wait": 3000 },
+    { "name": "02-m", "noshot": true, "js": "(()=>{const f=document.querySelector('.hero-figure').getBoundingClientRect(), c=document.querySelector('.hero-copy').getBoundingClientRect(); return JSON.stringify({drawL:(f.left+f.width*0.329)|0, copyR:c.right|0, figT:f.top|0, docW:document.documentElement.scrollWidth, vw:innerWidth})})()", "wait": 100 }
+  ]},
+  { "name": "t820", "w": 820, "h": 1180, "mobile": true, "shots": [
+    { "name": "01-hero", "wait": 3000 },
+    { "name": "02-m", "noshot": true, "js": "JSON.stringify({docW:document.documentElement.scrollWidth, vw:innerWidth})", "wait": 100 }
+  ]},
+  { "name": "m390", "w": 390, "h": 844, "mobile": true, "shots": [
+    { "name": "01-hero", "wait": 3000 },
+    { "name": "02-fig", "js": "window.scrollTo(0, 420)", "wait": 1500 },
+    { "name": "03-m", "noshot": true, "js": "(()=>{const h=document.querySelector('.hero').getBoundingClientRect(), f=document.querySelector('.hero-figure').getBoundingClientRect(); return JSON.stringify({heroB:h.bottom|0, figB:f.bottom|0, figL:f.left|0, figR:f.right|0, docW:document.documentElement.scrollWidth, bodyW:document.body.scrollWidth, vw:innerWidth})})()", "wait": 100 }
+  ]},
+  { "name": "m360", "w": 360, "h": 740, "mobile": true, "shots": [
+    { "name": "01-fig", "js": "window.scrollTo(0, 380)", "wait": 3000 },
+    { "name": "02-m", "noshot": true, "js": "JSON.stringify({docW:document.documentElement.scrollWidth, bodyW:document.body.scrollWidth, vw:innerWidth})", "wait": 100 }
+  ]}
+]

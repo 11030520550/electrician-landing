@@ -1,0 +1,6 @@
+[
+  { "name": "survey", "w": 1300, "h": 1150, "mobile": false, "shots": [
+    { "name": "01", "wait": 4000 },
+    { "name": "loaded", "noshot": true, "js": "document.title", "wait": 100 }
+  ]}
+]

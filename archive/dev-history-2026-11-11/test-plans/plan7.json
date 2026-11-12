@@ -1,0 +1,5 @@
+[
+  { "name": "nib", "w": 1300, "h": 900, "mobile": false, "shots": [
+    { "name": "01", "wait": 4000 }
+  ]}
+]

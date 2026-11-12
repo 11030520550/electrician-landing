@@ -1,0 +1,143 @@
+/* ---------- Hero — composition follows the client's sketch ----------
+   Figure on the right, text starting near the centre and running left,
+   its top at about the figure's face height. The figure sits on the
+   section edge: its crossed arms extend into the values section. */
+
+.hero {
+  --hero-bg: #f6f4ea; /* NWC030, sampled from the sketch */
+  position: relative;
+  z-index: 2; /* above .values so the arms can overlap the edge */
+  display: flex;
+  min-height: 640px;
+  min-height: clamp(640px, 92svh, 900px);
+  padding: var(--header-h) var(--page-pad) 0;
+  background: var(--hero-bg);
+}
+.hero::before {
+  /* barely-there lift of light behind the text, no visible gradient */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(40% 50% at 38% 62%, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 41fr) minmax(0, 59fr);
+}
+
+.hero-figure {
+  position: relative;
+  align-self: end;
+  justify-self: center;
+  width: min(100%, 520px);
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  transform: translateY(12%);
+  pointer-events: none;
+  animation: figure-in 2s var(--ease-cine) both .15s;
+}
+.hero-figure-art {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+@keyframes figure-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hero-copy {
+  align-self: end;
+  justify-self: start;
+  max-width: 34rem;
+  padding-inline-start: clamp(.5rem, 3vw, 3rem);
+  padding-bottom: clamp(3rem, 9vh, 6.5rem);
+}
+.hero-copy > * { animation: rise-in 1.6s var(--ease-cine) both; }
+.hero-copy > :nth-child(1) { animation-delay: .3s; }
+.hero-copy > :nth-child(2) { animation-delay: .55s; }
+.hero-copy > :nth-child(3) { animation-delay: .7s; }
+.hero-copy > :nth-child(4) { animation-delay: .9s; }
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+
+.hero h1 {
+  display: flex;
+  flex-direction: column;
+  font-weight: inherit;
+}
+.hero-title {
+  font-family: "Gveret Levin", var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3.4rem, 6.6vw, 6.2rem);
+  line-height: 1.05;
+  color: var(--smoke-deep);
+}
+.hero-name {
+  margin-top: .3em;
+  font-family: "Bellefair", var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.3rem, 4.3vw, 3.9rem);
+  line-height: 1.05;
+  letter-spacing: .01em;
+  color: var(--ink);
+}
+.hero-values {
+  margin-top: 1.3rem;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: .08em;
+  color: var(--smoke);
+}
+.hero-intro {
+  margin-top: .8rem;
+  max-width: 29rem;
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  color: var(--smoke-deep);
+}
+
+.button-smoke {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 2.2rem;
+  padding: 1rem 2.4rem;
+  border-radius: 999px;
+  background: #5c6c7a;
+  color: #fbf8f3;
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: .02em;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 16px 34px -18px rgba(52, 64, 75, .6);
+  transition: background-color .7s var(--ease-soft), box-shadow .7s var(--ease-soft), transform .7s var(--ease-cine);
+}
+.button-smoke::before {
+  /* soft warm light that rises on hover */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(90% 130% at 50% 0%, rgba(255, 236, 200, .28), rgba(255, 236, 200, 0) 65%);
+  opacity: 0;
+  transition: opacity .8s var(--ease-soft);
+}
+.button-smoke:hover,
+.button-smoke:focus-visible {
+  background: #66788a;
+  transform: translateY(-1px);
+  box-shadow: 0 20px 40px -18px rgba(52, 64, 75, .6), 0 0 0 5px rgba(92, 108, 122, .1);
+}
+.button-smoke:hover::before,
+.button-smoke:focus-visible::before { opacity: 1; }
+

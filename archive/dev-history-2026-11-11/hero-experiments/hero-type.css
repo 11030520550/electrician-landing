@@ -1,0 +1,107 @@
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
+  align-self: end;
+  justify-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* RTL: lines start on the right, near the figure */
+  padding-inline-start: clamp(.5rem, 3vw, 3rem);
+  padding-bottom: clamp(2.5rem, 6vh, 4.5rem);
+}
+.hero-copy > * { animation: rise-in 1.6s var(--ease-cine) both; }
+.hero-copy > :nth-child(1) { animation-delay: .3s; }
+.hero-copy > :nth-child(2) { animation-delay: .55s; }
+.hero-copy > :nth-child(3) { animation-delay: .7s; }
+.hero-copy > :nth-child(4) { animation-delay: .9s; }
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+
+.hero h1 {
+  display: flex;
+  flex-direction: column;
+  font-weight: inherit;
+}
+/* Display title: condensed, high-contrast serif */
+.hero-title {
+  font-family: "Noto Serif Hebrew", var(--font-display);
+  font-weight: 800;
+  font-stretch: 62.5%;
+  font-size: clamp(4.2rem, 9vw, 8.4rem);
+  line-height: .98;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+/* Signature line: calligraphic italic, with a fine broad-nib sweep
+   (stacked offsets along a slanted nib) for a pen-written stroke */
+.hero-name {
+  margin-top: .22em;
+  font-family: "Bona Nova", var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  line-height: 1.1;
+  color: var(--smoke-deep);
+  text-shadow:
+    -.002em .005em 0 currentColor,
+    -.004em .01em 0 currentColor,
+    -.006em .015em 0 currentColor,
+    -.008em .02em 0 currentColor;
+}
+/* Values: light serif, widely spaced */
+.hero-values {
+  margin-top: 1.1rem;
+  font-family: "Frank Ruhl Libre", var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+  letter-spacing: .16em;
+  word-spacing: .55em;
+  color: var(--smoke);
+}
+.hero-intro {
+  margin-top: .9rem;
+  max-width: 34rem;
+  font-size: clamp(1.02rem, 1.3vw, 1.17rem);
+  line-height: 1.75;
+  color: var(--smoke-deep);
+}
+
+/* Contact button: warm caramel pill, bottom-left of the text block */
+.hero-cta {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  margin-top: 2rem;
+  padding: 1rem 1.9rem 1rem 2.2rem;
+  border-radius: 999px;
+  background: #e0a35f;
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 1.06rem;
+  letter-spacing: .01em;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .35) inset, 0 16px 32px -18px rgba(150, 92, 30, .65);
+  transition: background-color .6s var(--ease-soft), box-shadow .6s var(--ease-soft), transform .6s var(--ease-cine);
+}
+.hero-cta svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .6s var(--ease-cine);
+}
+.hero-cta:hover,
+.hero-cta:focus-visible {
+  background: #e8b273;
+  transform: translateY(-1px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .4) inset, 0 20px 38px -18px rgba(150, 92, 30, .7), 0 0 0 5px rgba(224, 163, 95, .16);
+}
+.hero-cta:hover svg { transform: rotate(-8deg); }
+

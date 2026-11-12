@@ -1,0 +1,20 @@
+[
+  { "name": "desk", "w": 1440, "h": 900, "mobile": false, "shots": [
+    { "name": "03-exp", "js": "document.querySelector('#experience').scrollIntoView({behavior:'instant'}); window.scrollBy(0,150)", "wait": 4000 },
+    { "name": "04-serv-a", "js": "document.querySelector('#services').scrollIntoView({behavior:'instant'}); window.scrollBy(0,450)", "wait": 2500 },
+    { "name": "05-serv-b", "js": "window.scrollBy(0, 850)", "wait": 2500 },
+    { "name": "06-serv-c", "js": "window.scrollBy(0, 850)", "wait": 2500 },
+    { "name": "07-back-up", "js": "window.scrollBy(0, -1200)", "wait": 2500 }
+  ]},
+  { "name": "form", "w": 1440, "h": 900, "mobile": false, "query": "?form-test=1", "shots": [
+    { "name": "01-empty", "js": "document.querySelector('#contact').scrollIntoView({behavior:'instant'}); document.querySelector('[data-contact-form] button[type=submit]').click(); JSON.stringify({hidden: document.querySelector('[data-contact-form]').hidden, status: document.querySelector('[data-form-status]').textContent, errs: [...document.querySelectorAll('.field-error')].map(e=>e.textContent)})", "wait": 2500 },
+    { "name": "02-badphone", "js": "const f=document.querySelector('[data-contact-form]'); f.name.value='ישראל ישראלי'; f.phone.value='12ab'; f.email.value='x@'; f.message.value='בדיקה של הטופס'; f.querySelector('button[type=submit]').click(); JSON.stringify([...document.querySelectorAll('.field-error')].map(e=>e.textContent))", "wait": 1500 },
+    { "name": "03-valid", "js": "new Promise(r=>{const f=document.querySelector('[data-contact-form]'); f.phone.value='055-671-7730'; f.email.value=''; f.querySelector('button[type=submit]').click(); setTimeout(()=>r(document.querySelector('[data-form-status]').textContent + ' | state=' + document.querySelector('[data-form-status]').dataset.state), 1500);})", "wait": 1000 }
+  ]},
+  { "name": "mob", "w": 390, "h": 844, "mobile": true, "shots": [
+    { "name": "01-hero", "wait": 1800 },
+    { "name": "06-serv", "js": "document.querySelector('#services').scrollIntoView({behavior:'instant'}); window.scrollBy(0, 550)", "wait": 2500 },
+    { "name": "07-serv2", "js": "window.scrollBy(0, 700)", "wait": 2500 },
+    { "name": "metrics", "noshot": true, "js": "JSON.stringify({docW: document.documentElement.scrollWidth, vw: innerWidth})", "wait": 100 }
+  ]}
+]

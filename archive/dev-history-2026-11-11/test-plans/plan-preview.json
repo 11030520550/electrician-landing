@@ -1,0 +1,12 @@
+[
+  { "name": "p1440", "w": 1440, "h": 900, "mobile": false, "shots": [
+    { "name": "01-hero", "wait": 4000 },
+    { "name": "02-m", "noshot": true, "js": "(()=>{const imgs=[...document.images].map(i=>[i.getAttribute('src'),i.complete&&i.naturalWidth>0]); const a=[...document.querySelectorAll('a[href^=\"tel:\"],a[href*=\"wa.me\"]')].map(x=>x.getAttribute('href').slice(0,40)); const f=document.querySelector('.hero-figure').getBoundingClientRect(); return JSON.stringify({imgs, links:[...new Set(a)], form:!!document.querySelector('form'), fallbackVisible:document.querySelector('[data-form-fallback]').offsetHeight>0, fig:[f.left|0,f.top|0,f.right|0,f.bottom|0], docW:document.documentElement.scrollWidth, css:getComputedStyle(document.body).fontFamily.slice(0,30)})})()", "wait": 100 },
+    { "name": "03-contact", "js": "document.querySelector('#contact').scrollIntoView(); 'ok'", "wait": 2000 }
+  ]},
+  { "name": "p390", "w": 390, "h": 844, "mobile": true, "shots": [
+    { "name": "01-hero", "wait": 4000 },
+    { "name": "02-m", "noshot": true, "js": "(()=>{const imgs=[...document.images].map(i=>[i.getAttribute('src'),i.complete&&i.naturalWidth>0]); const bar=document.querySelector('.mobile-bar'); return JSON.stringify({imgs, bar:bar?getComputedStyle(bar).display:null, call:document.querySelector('.mobile-call').href, wa:document.querySelector('.mobile-wa').href, docW:document.documentElement.scrollWidth, vw:innerWidth})})()", "wait": 100 },
+    { "name": "03-contact", "js": "document.querySelector('#contact').scrollIntoView(); 'ok'", "wait": 2000 }
+  ]}
+]

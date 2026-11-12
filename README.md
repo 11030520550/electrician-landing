@@ -13,9 +13,9 @@
 | `assets/images/` | תמונות האתר; מקור ורישוי ב־`assets/images/SOURCES.md` |
 | `build-preview.ps1` | בונה את `netlify-preview/` להעלאה ידנית ל־Netlify Drop (בלי הטופס הלא־מחובר) |
 | `build-dist.ps1` | בונה את `dist/` — אותם קבצים, כולל הטופס המוסתר |
-| `tools/browser-check/` | כלי בדיקה אוטומטית ב־Chrome (ראו README בתיקייה) |
-| `reference/` | תמונות השראה. לא בשימוש באתר |
-| `archive/` | גרסאות וסקיצות ישנות. לא בשימוש באתר. פירוט ב־`ARCHIVE-INDEX.md` |
+| `tools/browser-check/` | כלי בדיקה אוטומטית ב־Chrome ושרת מקומי קטן (ראו README בתיקייה) |
+| `reference/` | תמונות השראה ומודעת הדפוס של הלקוח. לא בשימוש באתר |
+| `archive/` | גרסה ישנה, סקיצות, מודעה מוקדמת וחומרי הפיתוח (תוכניות בדיקה, הצעות טיפוגרפיה, צילומי מסך). לא בשימוש באתר. פירוט ב־`ARCHIVE-INDEX.md` |
 
 `dist/` ו־`netlify-preview/` נוצרות מחדש על ידי הסקריפטים ומוחרגות מ־Git.
 
