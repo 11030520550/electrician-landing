@@ -21,7 +21,6 @@
   --hairline: rgba(52, 64, 75, 0.14);
   --hairline-strong: rgba(52, 64, 75, 0.28);
 
-  --color-breaker-blue: #0B4EA2;
 
   --font-display: "Frank Ruhl Libre", "David", "Times New Roman", serif;
   --font-body: "Heebo", "Segoe UI", Arial, sans-serif;
@@ -584,11 +583,19 @@ h2 span {
   color: var(--smoke);
 }
 
-/* ---------- Values: three circuit breakers ----------
-   Each breaker is a <button aria-pressed>. Pressed = handle down and the
-   value fades in underneath. All rules are scoped to .breakers-*. */
+/* ---------- Values: three pencil lightbulbs ----------
+   All off at first. A bulb lights on hover (mouse) or when pressed
+   (tap / Enter / Space toggles aria-pressed). --on drives every warm
+   layer; each layer fades in a little later, like a filament warming up.
+   All rules are scoped to .bulbs-*. */
 
-.breakers {
+.bulbs-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.bulbs {
   position: relative;
   max-width: var(--max);
   margin: 3.2rem auto 0;
@@ -597,155 +604,63 @@ h2 span {
   justify-content: center;
   gap: clamp(1.5rem, 4vw, 4.5rem);
 }
-.breakers-item {
+.bulbs-item {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.breakers-switch {
+.bulbs-switch {
+  --on: 0;
   display: block;
-  padding: 6px;
+  padding: 0;
   border: 0;
-  border-radius: 14px;
+  border-radius: 18px;
   background: none;
-  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-
-/* Plastic housing: light grey-white, rounded, with a moulded edge */
-.breakers-body {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 88px;
-  height: 152px;
-  padding: 12px 0;
-  border-radius: 10px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 75%, rgba(52, 64, 75, .06)),
-    linear-gradient(90deg, #d5d8da 0%, #eef0f0 14%, #f9f9f8 50%, #eceeee 86%, #cfd3d5 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .95),
-    inset 0 -2px 3px rgba(52, 64, 75, .1),
-    0 3px 0 #c4c8cb,
-    0 4px 3px rgba(36, 40, 45, .12),
-    0 18px 30px -14px rgba(36, 40, 45, .35);
-  transition: transform .25s var(--ease-soft);
+.bulbs-switch[aria-pressed="true"] { --on: 1; }
+@media (hover: hover) and (pointer: fine) {
+  .bulbs-switch:hover { --on: 1; }
 }
-.breakers-switch:active .breakers-body { transform: translateY(1px); }
-
-/* Terminal screws */
-.breakers-screw {
-  position: relative;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #fdfdfd, #b9bec2 60%, #8e959b);
-  box-shadow: inset 0 0 0 1px rgba(52, 64, 75, .25), 0 1px 0 rgba(255, 255, 255, .9);
+.bulbs-lamp {
+  width: clamp(160px, 18vw, 270px);
+  height: auto;
+  aspect-ratio: 2 / 3;
+  overflow: visible;
 }
-.breakers-screw::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 2px;
-  right: 2px;
-  height: 2px;
-  margin-top: -1px;
-  border-radius: 1px;
-  background: rgba(52, 64, 75, .55);
-  transform: rotate(-35deg);
+.bulbs-halo,
+.bulbs-glass,
+.bulbs-filament,
+.bulbs-rays {
+  opacity: var(--on);
+  transition: opacity var(--t, .9s) var(--ease-soft) calc(var(--on) * var(--d, 0s));
 }
-.breakers-screw--bottom::before { transform: rotate(20deg); }
-
-/* Recess the handle travels in */
-.breakers-slot {
-  position: relative;
-  width: 42px;
-  height: 78px;
-  border-radius: 7px;
-  background: linear-gradient(180deg, #b7bcc0, #d6d9db 40%, #dfe2e3);
-  box-shadow:
-    inset 0 3px 6px rgba(36, 40, 45, .35),
-    inset 0 -1px 0 rgba(255, 255, 255, .6),
-    0 1px 0 rgba(255, 255, 255, .9);
+.bulbs-filament { --t: .55s; }
+.bulbs-glass { --d: .12s; }
+.bulbs-halo { --d: .22s; --t: 1.1s; }
+.bulbs-rays {
+  --d: .32s;
+  transform: scale(calc(.92 + var(--on) * .08));
+  transform-origin: 100px 104px;
+  transform-box: view-box;
+  transition:
+    opacity .8s var(--ease-soft) calc(var(--on) * var(--d)),
+    transform 1.1s var(--ease-cine) calc(var(--on) * var(--d));
 }
-
-/* Blue handle: starts up, drops with a small bounce at the end */
-.breakers-handle {
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  right: 4px;
-  height: calc(50% - 6px);
-  border-radius: 5px;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .16) 30%, rgba(255, 255, 255, 0) 60%),
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--color-breaker-blue), #fff 28%) 0%,
-      color-mix(in srgb, var(--color-breaker-blue), #fff 10%) 22%,
-      var(--color-breaker-blue) 62%,
-      color-mix(in srgb, var(--color-breaker-blue), #000 28%) 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .45),
-    inset 0 -2px 2px rgba(0, 0, 0, .2),
-    0 4px 6px -1px rgba(11, 30, 60, .45);
-  transition: transform .55s cubic-bezier(.34, 1.5, .5, 1);
-}
-/* grip ridges */
-.breakers-handle::after {
-  content: "";
-  position: absolute;
-  inset: 34% 22%;
-  border-radius: 2px;
-  background: repeating-linear-gradient(180deg, rgba(0, 0, 0, .22) 0 1px, rgba(255, 255, 255, .18) 1px 2px, transparent 2px 4px);
-}
-.breakers-switch:hover .breakers-handle { filter: brightness(1.08); }
-.breakers-switch[aria-pressed="true"] .breakers-handle { transform: translateY(calc(100% + 4px)); }
-
-/* Hint and value share one cell, so revealing never shifts the layout */
-.breakers-reveal {
-  display: grid;
-  margin-top: 1.8rem;
-}
-.breakers-reveal > * { grid-area: 1 / 1; }
-.breakers-hint {
-  align-self: start;
-  justify-self: center;
-  font-size: .82rem;
-  letter-spacing: .04em;
-  color: var(--smoke-soft);
-  transition: opacity .4s var(--ease-soft);
-}
-.breakers-hint::after { content: " \2193"; }
-.breakers-value {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.1rem;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(16px);
-  transition: opacity .5s var(--ease-soft), transform .7s var(--ease-cine), visibility 0s linear .7s;
-}
-.breakers-switch[aria-pressed="true"] + .breakers-reveal .breakers-hint { opacity: 0; }
-.breakers-switch[aria-pressed="true"] + .breakers-reveal .breakers-value {
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-  transition: opacity .7s var(--ease-soft) .18s, transform .9s var(--ease-cine) .18s, visibility 0s;
-}
-.breakers-switch[aria-pressed="true"] + .breakers-reveal .value-word {
-  animation: light-sweep 2.6s var(--ease-soft) both .3s;
+.bulbs-title { margin-top: .5rem; }
+.bulbs-note { margin-top: 1.1rem; }
+.bulbs-divider {
+  align-self: flex-end;
+  width: 1px;
+  height: 1.9rem;
+  margin-bottom: .3rem;
+  background: rgba(36, 40, 45, .18);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .breakers-handle,
-  .breakers-value,
-  .breakers-hint { transition: none !important; }
-  .breakers-value { transform: none; }
-  .breakers-switch[aria-pressed="true"] + .breakers-reveal .value-word { animation: none; }
+  .bulbs-lamp use { transition: none !important; }
+  .bulbs-rays { transform: none; }
 }
 
 /* ---------- Experience ---------- */
@@ -1387,10 +1302,9 @@ html:not(.js) .filament-glow { stroke-dashoffset: 0; }
   .hero-values { letter-spacing: .1em; word-spacing: .35em; }
   .hero-intro br { display: none; }
 
-  .breakers { flex-direction: column; align-items: center; gap: 2.6rem; }
-  .breakers-body { width: 76px; height: 132px; padding: 10px 0; }
-  .breakers-slot { width: 36px; height: 68px; }
-  .breakers-reveal { margin-top: 1.3rem; }
+  .bulbs { flex-direction: column; align-items: center; gap: 3rem; }
+  .bulbs-divider { display: none; }
+  .bulbs-lamp { width: 190px; }
 
   .circuit { padding-top: 3.5rem; padding-bottom: 4.5rem; }
   .service,

@@ -52,10 +52,13 @@ if ("IntersectionObserver" in window && !reduceMotion.matches) {
   revealTargets.forEach((el) => el.classList.add("is-visible"));
 }
 
-/* ---------- Values: breakers (each toggles on its own) ---------- */
-document.querySelectorAll(".breakers-switch").forEach((breaker) => {
-  breaker.addEventListener("click", () => {
-    breaker.setAttribute("aria-pressed", String(breaker.getAttribute("aria-pressed") !== "true"));
+/* ---------- Values: lightbulbs ----------
+   A mouse lights a bulb on hover (CSS). Tap, pen, Enter and Space toggle it
+   on and off; each bulb works on its own. */
+document.querySelectorAll(".bulbs-switch").forEach((bulb) => {
+  bulb.addEventListener("click", (event) => {
+    if (event.pointerType === "mouse") return;
+    bulb.setAttribute("aria-pressed", String(bulb.getAttribute("aria-pressed") !== "true"));
   });
 });
 
