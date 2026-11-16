@@ -21,9 +21,6 @@
   --hairline: rgba(52, 64, 75, 0.14);
   --hairline-strong: rgba(52, 64, 75, 0.28);
 
-  /* Section backgrounds, alternating (Nirlat) */
-  --color-antarctica: #F0F0EC;  /* NWC064 - odd sections */
-  --color-extra-white: #FFFFFF; /* even sections */
   --color-breaker-blue: #0B4EA2;
 
   --font-display: "Frank Ruhl Libre", "David", "Times New Roman", serif;
@@ -1311,13 +1308,6 @@ html:not(.js) .filament-glow { stroke-dashoffset: 0; }
   color: rgba(251, 248, 243, .55);
 }
 .footer-bottom a:hover { color: var(--white); }
-
-/* ---------- Alternating section backgrounds ----------
-   Odd sections: Antarctica (NWC064). Even sections: Extra White.
-   Selector specificity beats the per-section rules above. */
-
-main > section:nth-of-type(odd) { background: var(--color-antarctica); }
-main > section:nth-of-type(even) { background: var(--color-extra-white); }
 
 /* ---------- Mobile quick bar ---------- */
 
