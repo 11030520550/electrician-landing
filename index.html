@@ -70,20 +70,57 @@
     <section class="values" id="values" aria-labelledby="values-title">
       <h2 class="visually-hidden" id="values-title">הערכים שלנו</h2>
       <p class="section-eyebrow reveal">הערכים שמובילים כל עבודה</p>
-      <ul class="values-line">
-        <li class="value reveal" style="--i:0">
-          <span class="value-word">מקצועיות</span>
-          <span class="value-note">ניסיון רב, עבודה יסודית ומדויקת.</span>
+      <!-- Three independent breakers (RTL: right → left). Pressing one pulls
+           its handle down and reveals the value underneath; pressing again
+           lifts it and hides the value. -->
+      <ul class="breakers">
+        <li class="breakers-item reveal" style="--i:0">
+          <button class="breakers-switch" type="button" aria-pressed="false" aria-label="מפסק: מקצועיות" aria-controls="breaker-value-1">
+            <span class="breakers-body" aria-hidden="true">
+              <span class="breakers-screw breakers-screw--top"></span>
+              <span class="breakers-slot"><span class="breakers-handle"></span></span>
+              <span class="breakers-screw breakers-screw--bottom"></span>
+            </span>
+          </button>
+          <div class="breakers-reveal">
+            <span class="breakers-hint" aria-hidden="true">הורידו את המפסק</span>
+            <p class="breakers-value" id="breaker-value-1">
+              <span class="value-word">מקצועיות</span>
+              <span class="value-note">ניסיון רב, עבודה יסודית ומדויקת.</span>
+            </p>
+          </div>
         </li>
-        <li class="value-divider reveal" aria-hidden="true" style="--i:1"></li>
-        <li class="value reveal" style="--i:2">
-          <span class="value-word">אמינות</span>
-          <span class="value-note">אחריות, שקיפות והקפדה על הפרטים.</span>
+        <li class="breakers-item reveal" style="--i:1">
+          <button class="breakers-switch" type="button" aria-pressed="false" aria-label="מפסק: אמינות" aria-controls="breaker-value-2">
+            <span class="breakers-body" aria-hidden="true">
+              <span class="breakers-screw breakers-screw--top"></span>
+              <span class="breakers-slot"><span class="breakers-handle"></span></span>
+              <span class="breakers-screw breakers-screw--bottom"></span>
+            </span>
+          </button>
+          <div class="breakers-reveal">
+            <span class="breakers-hint" aria-hidden="true">הורידו את המפסק</span>
+            <p class="breakers-value" id="breaker-value-2">
+              <span class="value-word">אמינות</span>
+              <span class="value-note">אחריות, שקיפות והקפדה על הפרטים.</span>
+            </p>
+          </div>
         </li>
-        <li class="value-divider reveal" aria-hidden="true" style="--i:3"></li>
-        <li class="value reveal" style="--i:4">
-          <span class="value-word">בטיחות</span>
-          <span class="value-note">עבודה לפי התקנים, בלי קיצורי דרך.</span>
+        <li class="breakers-item reveal" style="--i:2">
+          <button class="breakers-switch" type="button" aria-pressed="false" aria-label="מפסק: בטיחות" aria-controls="breaker-value-3">
+            <span class="breakers-body" aria-hidden="true">
+              <span class="breakers-screw breakers-screw--top"></span>
+              <span class="breakers-slot"><span class="breakers-handle"></span></span>
+              <span class="breakers-screw breakers-screw--bottom"></span>
+            </span>
+          </button>
+          <div class="breakers-reveal">
+            <span class="breakers-hint" aria-hidden="true">הורידו את המפסק</span>
+            <p class="breakers-value" id="breaker-value-3">
+              <span class="value-word">בטיחות</span>
+              <span class="value-note">עבודה לפי התקנים, בלי קיצורי דרך.</span>
+            </p>
+          </div>
         </li>
       </ul>
     </section>

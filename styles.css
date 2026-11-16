@@ -21,6 +21,11 @@
   --hairline: rgba(52, 64, 75, 0.14);
   --hairline-strong: rgba(52, 64, 75, 0.28);
 
+  /* Section backgrounds, alternating (Nirlat) */
+  --color-antarctica: #F0F0EC;  /* NWC064 - odd sections */
+  --color-extra-white: #FFFFFF; /* even sections */
+  --color-breaker-blue: #0B4EA2;
+
   --font-display: "Frank Ruhl Libre", "David", "Times New Roman", serif;
   --font-body: "Heebo", "Segoe UI", Arial, sans-serif;
 
@@ -557,21 +562,6 @@ h2 span {
   background: radial-gradient(40% 50% at 50% 55%, rgba(244, 201, 120, .12), transparent 70%);
   pointer-events: none;
 }
-.values-line {
-  position: relative;
-  max-width: var(--max);
-  margin: 3.2rem auto 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: clamp(1.5rem, 4vw, 4.5rem);
-}
-.value {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.1rem;
-}
 .value-word {
   font-family: var(--font-display);
   font-weight: 300;
@@ -587,10 +577,6 @@ h2 span {
   -webkit-text-fill-color: transparent;
   padding-bottom: .08em;
 }
-.js .value.is-visible .value-word {
-  animation: light-sweep 2.6s var(--ease-soft) both;
-  animation-delay: calc(var(--i, 0) * 140ms + .25s);
-}
 @keyframes light-sweep {
   from { background-position: 100% 0; }
   to { background-position: 0% 0; }
@@ -600,27 +586,170 @@ h2 span {
   font-size: .95rem;
   color: var(--smoke);
 }
-.value-divider {
+
+/* ---------- Values: three circuit breakers ----------
+   Each breaker is a <button aria-pressed>. Pressed = handle down and the
+   value fades in underneath. All rules are scoped to .breakers-*. */
+
+.breakers {
   position: relative;
-  align-self: stretch;
-  width: 1px;
-  margin-block: .4rem 3.2rem;
-  background: linear-gradient(to bottom, transparent, var(--hairline-strong), transparent);
+  max-width: var(--max);
+  margin: 3.2rem auto 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 4.5rem);
 }
-.value-divider::after {
+.breakers-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.breakers-switch {
+  display: block;
+  padding: 6px;
+  border: 0;
+  border-radius: 14px;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Plastic housing: light grey-white, rounded, with a moulded edge */
+.breakers-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 88px;
+  height: 152px;
+  padding: 12px 0;
+  border-radius: 10px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0) 75%, rgba(52, 64, 75, .06)),
+    linear-gradient(90deg, #d5d8da 0%, #eef0f0 14%, #f9f9f8 50%, #eceeee 86%, #cfd3d5 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .95),
+    inset 0 -2px 3px rgba(52, 64, 75, .1),
+    0 3px 0 #c4c8cb,
+    0 4px 3px rgba(36, 40, 45, .12),
+    0 18px 30px -14px rgba(36, 40, 45, .35);
+  transition: transform .25s var(--ease-soft);
+}
+.breakers-switch:active .breakers-body { transform: translateY(1px); }
+
+/* Terminal screws */
+.breakers-screw {
+  position: relative;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fdfdfd, #b9bec2 60%, #8e959b);
+  box-shadow: inset 0 0 0 1px rgba(52, 64, 75, .25), 0 1px 0 rgba(255, 255, 255, .9);
+}
+.breakers-screw::before {
   content: "";
   position: absolute;
-  top: 38%;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  margin-left: -2.5px;
-  border-radius: 50%;
-  background: var(--amber);
-  box-shadow: 0 0 12px 3px rgba(231, 163, 62, .45);
+  top: 50%;
+  left: 2px;
+  right: 2px;
+  height: 2px;
+  margin-top: -1px;
+  border-radius: 1px;
+  background: rgba(52, 64, 75, .55);
+  transform: rotate(-35deg);
 }
-.js .value-divider.reveal { transform: scaleY(.2); filter: none; }
-.js .value-divider.reveal.is-visible { transform: none; }
+.breakers-screw--bottom::before { transform: rotate(20deg); }
+
+/* Recess the handle travels in */
+.breakers-slot {
+  position: relative;
+  width: 42px;
+  height: 78px;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #b7bcc0, #d6d9db 40%, #dfe2e3);
+  box-shadow:
+    inset 0 3px 6px rgba(36, 40, 45, .35),
+    inset 0 -1px 0 rgba(255, 255, 255, .6),
+    0 1px 0 rgba(255, 255, 255, .9);
+}
+
+/* Blue handle: starts up, drops with a small bounce at the end */
+.breakers-handle {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  height: calc(50% - 6px);
+  border-radius: 5px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .16) 30%, rgba(255, 255, 255, 0) 60%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--color-breaker-blue), #fff 28%) 0%,
+      color-mix(in srgb, var(--color-breaker-blue), #fff 10%) 22%,
+      var(--color-breaker-blue) 62%,
+      color-mix(in srgb, var(--color-breaker-blue), #000 28%) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .45),
+    inset 0 -2px 2px rgba(0, 0, 0, .2),
+    0 4px 6px -1px rgba(11, 30, 60, .45);
+  transition: transform .55s cubic-bezier(.34, 1.5, .5, 1);
+}
+/* grip ridges */
+.breakers-handle::after {
+  content: "";
+  position: absolute;
+  inset: 34% 22%;
+  border-radius: 2px;
+  background: repeating-linear-gradient(180deg, rgba(0, 0, 0, .22) 0 1px, rgba(255, 255, 255, .18) 1px 2px, transparent 2px 4px);
+}
+.breakers-switch:hover .breakers-handle { filter: brightness(1.08); }
+.breakers-switch[aria-pressed="true"] .breakers-handle { transform: translateY(calc(100% + 4px)); }
+
+/* Hint and value share one cell, so revealing never shifts the layout */
+.breakers-reveal {
+  display: grid;
+  margin-top: 1.8rem;
+}
+.breakers-reveal > * { grid-area: 1 / 1; }
+.breakers-hint {
+  align-self: start;
+  justify-self: center;
+  font-size: .82rem;
+  letter-spacing: .04em;
+  color: var(--smoke-soft);
+  transition: opacity .4s var(--ease-soft);
+}
+.breakers-hint::after { content: " \2193"; }
+.breakers-value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity .5s var(--ease-soft), transform .7s var(--ease-cine), visibility 0s linear .7s;
+}
+.breakers-switch[aria-pressed="true"] + .breakers-reveal .breakers-hint { opacity: 0; }
+.breakers-switch[aria-pressed="true"] + .breakers-reveal .breakers-value {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity .7s var(--ease-soft) .18s, transform .9s var(--ease-cine) .18s, visibility 0s;
+}
+.breakers-switch[aria-pressed="true"] + .breakers-reveal .value-word {
+  animation: light-sweep 2.6s var(--ease-soft) both .3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .breakers-handle,
+  .breakers-value,
+  .breakers-hint { transition: none !important; }
+  .breakers-value { transform: none; }
+  .breakers-switch[aria-pressed="true"] + .breakers-reveal .value-word { animation: none; }
+}
 
 /* ---------- Experience ---------- */
 
@@ -1183,6 +1312,13 @@ html:not(.js) .filament-glow { stroke-dashoffset: 0; }
 }
 .footer-bottom a:hover { color: var(--white); }
 
+/* ---------- Alternating section backgrounds ----------
+   Odd sections: Antarctica (NWC064). Even sections: Extra White.
+   Selector specificity beats the per-section rules above. */
+
+main > section:nth-of-type(odd) { background: var(--color-antarctica); }
+main > section:nth-of-type(even) { background: var(--color-extra-white); }
+
 /* ---------- Mobile quick bar ---------- */
 
 .mobile-bar { display: none; }
@@ -1261,16 +1397,10 @@ html:not(.js) .filament-glow { stroke-dashoffset: 0; }
   .hero-values { letter-spacing: .1em; word-spacing: .35em; }
   .hero-intro br { display: none; }
 
-  .values-line { flex-direction: column; align-items: center; gap: 2.2rem; }
-  .value-divider {
-    width: 3rem;
-    height: 1px;
-    margin: 0;
-    align-self: center;
-    background: linear-gradient(to left, transparent, var(--hairline-strong), transparent);
-  }
-  .value-divider::after { top: -2px; }
-  .js .value-divider.reveal { transform: scaleX(.2); }
+  .breakers { flex-direction: column; align-items: center; gap: 2.6rem; }
+  .breakers-body { width: 76px; height: 132px; padding: 10px 0; }
+  .breakers-slot { width: 36px; height: 68px; }
+  .breakers-reveal { margin-top: 1.3rem; }
 
   .circuit { padding-top: 3.5rem; padding-bottom: 4.5rem; }
   .service,

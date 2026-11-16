@@ -52,6 +52,13 @@ if ("IntersectionObserver" in window && !reduceMotion.matches) {
   revealTargets.forEach((el) => el.classList.add("is-visible"));
 }
 
+/* ---------- Values: breakers (each toggles on its own) ---------- */
+document.querySelectorAll(".breakers-switch").forEach((breaker) => {
+  breaker.addEventListener("click", () => {
+    breaker.setAttribute("aria-pressed", String(breaker.getAttribute("aria-pressed") !== "true"));
+  });
+});
+
 /* ---------- Services: current travelling along the wire ---------- */
 const circuit = document.querySelector("[data-circuit]");
 if (circuit instanceof HTMLElement) {
