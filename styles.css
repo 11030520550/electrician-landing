@@ -598,7 +598,9 @@ h2 span {
 .bulbs {
   position: relative;
   max-width: var(--max);
-  margin: 3.2rem auto 0;
+  /* 3.2rem + the height of the removed eyebrow label, so the bulbs keep
+     their place and the white space above them */
+  margin: 5.14rem auto 0;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -651,13 +653,28 @@ h2 span {
 /* Quieter headings that sit in balance with the pencil drawings:
    Frank Ruhl Libre 400 at ~52px on desktop (was 300 at up to 6.4rem). */
 .bulbs-title {
-  margin-top: .35rem;
+  /* the drawing has empty space under its shadow; pull the heading up ~14px */
+  margin-top: -.55rem;
   font-weight: 400;
   font-size: clamp(2.1rem, 3.6vw, 3.3rem);
   line-height: 1.1;
   letter-spacing: 0;
+  /* plain ink instead of the inherited gradient text, so the colour can ease */
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: var(--ink);
+  transition: color .9s var(--ease-soft);
 }
-.bulbs-note { margin-top: .75rem; }
+/* lit bulb: the heading deepens to a slightly richer blue-charcoal */
+.bulbs-switch[aria-pressed="true"] + .bulbs-title { color: #1c2a3a; transition-delay: .12s; }
+@media (hover: hover) and (pointer: fine) {
+  .bulbs-switch:hover + .bulbs-title { color: #1c2a3a; transition-delay: .12s; }
+}
+.bulbs-note {
+  margin-top: .75rem;
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  color: #4d5c69;
+}
 .bulbs-divider {
   align-self: flex-end;
   width: 1px;
